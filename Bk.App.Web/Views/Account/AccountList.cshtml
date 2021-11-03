@@ -1,0 +1,55 @@
+﻿
+@model List<AccountListModel>
+@{
+    ViewData["Title"] = "AccountList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <table class="table table-striped text-center mt-3">
+                <thead class="bg-warning">
+                    <tr>
+                        <td>Name</td>
+                        <td>Surname</td>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@ViewBag.Name</td>
+                        <td>@ViewBag.Surname</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-9">
+            @if(Model.Count>0){
+            @foreach (var account in Model)
+            {
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white">Hesap Numarası: @account.AccountNumber</div>
+                <div class="card-body">
+                    Hesap Bakiyesi @account.Balance
+                    <br />
+                    <a class="btn btn-outline-success btn-sm" asp-action="sendmoney" asp-controller="account" asp-route-accountId="@account.Id">Başka Hesaba Havale</a>
+                </div>
+
+            </div>
+            }
+            }
+            else{
+        <div class="alert alert-danger mt-3" role="alert">
+             Hesap Bilgisi Bulunamadı...
+        </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+

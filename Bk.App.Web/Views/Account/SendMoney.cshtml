@@ -1,0 +1,19 @@
+﻿@model SelectList
+@{
+    ViewData["Title"] = "SendMoney";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <form method="post">
+        <input type="hidden" value="@ViewBag.senderId" name="senderId" />
+        <div class="form-group">
+            <select asp-items="@Model" class="form-control" name="AccountId"></select>
+        </div>
+        <div class="form-group">
+            <label class="form-text">Göndereceğiniz Miktar</label>
+            <input class="form-control" name="Amount" />
+        </div>
+        <button class="btn btn-primary" type="submit">Gönder</button>
+    </form>
+
+</div>

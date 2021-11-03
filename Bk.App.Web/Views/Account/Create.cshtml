@@ -1,0 +1,49 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped text-center">
+                <thead class="bg-warning">
+                    <tr>
+                        <td>Name</td>
+                        <td>Surname</td>
+                        <td>Account</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Name</td>
+                        <td>@Model.Surname</td>
+                        <td><getAccountCount application-user-id="@Model.Id"></getAccountCount></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Eklenecek Account</h3>
+            <form asp-action="create" method="post" asp-controller="account">
+                <div class="form-group">
+                    <div class="text-danger" asp-validation-for="Balance"></div>
+                    <label class="form-text">Account Balance </label>
+                    <input  class="form-control" name="Balance" />
+                </div>
+                <div class="form-group">
+                    <label class="form-text">Account </label>
+                    <input type="number" class="form-control" name="AccountNumber" />
+                </div>
+                <input type="hidden" value="@Model.Id" name="ApplicationUserId" />
+                <button type="submit" class="btn btn-info">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+

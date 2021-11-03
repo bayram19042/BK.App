@@ -1,0 +1,34 @@
+﻿@model List<ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <table class="table table-bordered  table-striped  mt-3">
+        <thead class="bg-success text-white">
+            <tr>
+                
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Account Count</td>
+                <td></td>
+                <td>Account List</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+                    <td><getAccountCount application-user-id="@user.Id"></getAccountCount></td>
+                    <td><a class="btn btn-outline-info btn-sm" asp-action="create" asp-controller="account" asp-route-id="@user.Id">Create New Account</a></td>
+                    <td><a class="btn btn-outline-success" asp-action="accountlist" asp-controller="account" asp-route-userid="@user.Id">Account List</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
